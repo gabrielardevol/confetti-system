@@ -1,0 +1,59 @@
+<confetti-layout [menu]="menu">
+
+  <nav nav class="p-2">
+    <button (click)="menu = !menu">toggle menu</button>
+    nav
+  </nav>
+  <div sidebar [style.min-height]="'100%'" style="display: flex; flex-flow: column; background: #efefef; ">
+    <confetti-background style="border-bottom: 1px solid black">
+      <div class="p-4">
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem <br>
+        lorem 123<br>
+        <confetti-button>
+          Botó
+        </confetti-button>
+        <div>
+          <ng-container>
+          </ng-container>
+        </div>
+      </div>
+
+    </confetti-background>
+  </div>
+
+  <confetti-background content>
+    <!--  <div style=" background: yellow;" >-->
+    <div class="p-4 relative" (click)="menu = false">
+      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
+      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
+      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
+      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
+      <div class="flex gap-2">
+        <confetti-button (click)="openModal()" [dark]="false">Obrir modal</confetti-button>
+        <confetti-button (click)="openModal()">Obrir modal</confetti-button>
+
+      </div>
+    </div>
+
+    <!--        <confetti-fillers-container>-->
+    <!--          <div class="flex flex-col max-w-[50%] m-4 ">-->
+    <!--            <div class="p-4 bg-white  rounded-xl border border-black">tes gr gsfdjg sagk jsdghasdg jkskdajg fdsjkg fsajdkg sakdjg sdakjfsakdjfh sdkjfg kdsajhg fkghdsaft</div>-->
+    <!--          </div>-->
+
+    <!--        </confetti-fillers-container>-->
+
+    <!--  </div>-->
+  </confetti-background>
+</confetti-layout>
+<div #modalContainer></div>
+
