@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ConfettiBackgroundComponent} from './confetti-background.component';
-import {NgClass} from '@angular/common';
+import {ConfettiBackgroundComponent} from '../public-api';
+import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'confetti-button',
   standalone: true,
   imports: [
     ConfettiBackgroundComponent,
-    NgClass
+    NgClass,
+    NgStyle
   ],
   styleUrls: ['utilities.scss'],
   styles: [`
@@ -25,20 +26,32 @@ import {NgClass} from '@angular/common';
       padding: 4px 12px;
     }
 
-    button.dark {
-      background: #202020;
-      color: white;
-      text-shadow: #202020 2px 2px 2px;
+    button.light {
+      background: var(--light-button-background);
+      color: var(--light-button-text-color);
+      text-shadow: var(--light-button-background) 2px 2px 2px;
     }
 
-    button.light {
-      background: white;
-      color:  #202020;
-      text-shadow: white 2px 2px 2px;
+    button.light:hover {
+      background: var(--hover-button-light);
+      text-shadow: var(--hover-button-light) 2px 2px 2px;
     }
+
+    button.dark {
+      background: var(--dark-button-background);
+      color: var(--dark-button-text-color);
+      text-shadow: var(--dark-button-background) 2px 2px 2px;
+    }
+
+    button.dark:hover {
+      background: var(--hover-button-dark);
+      text-shadow: var(--hover-button-dark) 2px 2px 2px;
+
+    }
+
   `],
   template: `
-    <button class="border border-black" [ngClass]="dark ? 'dark' : 'light'">
+    <button class="confetti-border"  [ngClass]="dark ? 'dark' : 'light'">
       <confetti-background  [density]="60">
         <ng-content></ng-content>
       </confetti-background>

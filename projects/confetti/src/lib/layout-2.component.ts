@@ -1,9 +1,10 @@
 import {Component, ElementRef, Input, Output, ViewChild} from '@angular/core';
-import {NgClass, NgIf} from '@angular/common';
+import {NgClass} from '@angular/common';
 import {SharedStateService} from './shared-state.service';
+import {FillersContainerComponent} from '../public-api';
 
 @Component({
-  selector: 'confetti-layout',
+  selector: 'confetti-layout-2',
   styleUrls: ['utilities.scss'],
   styles: [`
     main {
@@ -14,7 +15,8 @@ import {SharedStateService} from './shared-state.service';
     }
 
     aside div:first-child {
-      /*width: 200px;*/
+      width: 200px;
+      background: white;
     }
 
     @media (max-width: 767px) {
@@ -24,23 +26,23 @@ import {SharedStateService} from './shared-state.service';
 
       aside {
         position: absolute;
-        /*margin-right: 200px;*/
+        margin-right: 200px;
       }
 
       aside:not(.menu-hidden) > div:first-child > div:first-child {
-        /*left: 0 !important;*/
+        left: 0 !important;
         transition: left 0.3s ease;
       }
 
       aside.menu-hidden > div:first-child > div:first-child {
-        /*left: -200px !important;*/
+        left: -200px !important;
         transition: left 0.5s ease;
       }
     }
 
     @media (min-width: 768px) {
       main {
-        /*margin-left: 200px;*/
+        margin-left: 200px;
       }
 
       aside {
@@ -52,28 +54,19 @@ import {SharedStateService} from './shared-state.service';
   `],
 
   template: `
-    <div class="h-screen w-screen flex flex-col relative overflow-x-hidden" style="background: var(--background-color)">
-      <nav class="h-0 overflow-visible sticky top-0 w-full z-10" >
-        <div class="border-b" #navElement style="background: var(--navbar-color)">
+    <div class="h-screen w-screen flex flex-col relative overflow-x-hidden">
+      <nav class="h-0 overflow-visible sticky top-0 w-full z-10">
+        <div class="bg-white border-b" #navElement>
           <ng-content select="[nav]"></ng-content>
         </div>
       </nav>
-      <aside class="border-r sticky overflow-visible top-0 h-0 z-10" [ngClass]="menu ? '' : 'menu-hidden'" >
+
+      <aside class="border-r sticky overflow-visible top-0 h-0 z-10" [ngClass]="menu ? '' : 'menu-hidden'" style="">
         <div
-          [style.margin-top]="navbarSize + 'px'" class="relative" >
-          <div [style.height]="'calc(100vh - '+navbarSize + 'px'" style="background: var(--sidebar-background-color); width: fit-content"
+          [style.margin-top]="navbarSize + 'px'" class="relative">
+          <div [style.height]="'calc(100vh - '+navbarSize + 'px'"
                class="absolute top-0 left-0 border-r overflow-x-auto ">
             <ng-content select="[sidebar]"></ng-content>
-          </div>
-        </div>
-      </aside>
-      <aside class="sticky overflow-visible top-0 h-0 z-10" [ngClass]="menu ? '' : 'menu-hidden'" >
-        <div
-          [style.margin-top]="navbarSize + 'px'" class="relative" >
-          <div *ngIf="menu" [style.max-height]="'calc(100vh - '+navbarSize + 'px'"
-               class="absolute top-0 right-0 overflow-x-auto border confetti-border"
-               style="background: var(--sidebar-background-color); margin: 12px; padding: 12px; width: fit-content; border-radius: 8px">
-            <ng-content select="[menu]"></ng-content>
           </div>
         </div>
       </aside>
@@ -86,20 +79,19 @@ import {SharedStateService} from './shared-state.service';
   `,
   imports: [
     NgClass,
-    NgIf
+    FillersContainerComponent,
   ],
 })
-export class ConfettiLayout {
+export class ConfettiLayout2 {
   @ViewChild('navElement', { static: true }) navRef!: ElementRef<HTMLElement>;
   @Input() menu: boolean = false;
   navbarSize: number | any = 0;
   modal: boolean | any = false;
-  @Input() customSidebar: boolean = false;
 
   constructor(private sharedState: SharedStateService) {
   }
 
-  ngOnInit(){
+  ngAfterViewInit(){
     this.sharedState.navbarSize$.subscribe(value => {
       this.navbarSize = value;
     });

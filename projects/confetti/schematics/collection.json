@@ -1,0 +1,8 @@
+{
+  "schematics": {
+    "ng-add": {
+      "description": "Afegir boilerplate.scss a src/styles/",
+      "factory": "./add/index#ngAdd"
+    }
+  }
+}

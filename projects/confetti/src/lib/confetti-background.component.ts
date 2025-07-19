@@ -5,8 +5,9 @@ import { NgIf } from '@angular/common';
   selector: 'confetti-background',
   standalone: true,
   imports: [NgIf],
+  styleUrls: ['./utilities.scss'],
   template: `
-    <div #confettiContainer style="width: 100%; height: 100%;">
+    <div #confettiContainer style="width: 100%; height: 100%; color: inherit">
       <div class="confetti-background-container">
         <svg #svgContainer
              [attr.height]="height"
@@ -22,6 +23,8 @@ import { NgIf } from '@angular/common';
     :host {
       display: block;
       height: 100%;
+      color: inherit;
+      overflow: hidden;
     }
 
     .confetti-background-container {
@@ -29,7 +32,7 @@ import { NgIf } from '@angular/common';
     }
   `]
 })
-export class ConfettiBackgroundComponent implements AfterViewInit {
+export class ConfettiBackgroundComponent {
   @ViewChild('confettiContainer', { static: false }) confettiContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('svgContainer', { static: false }) svgContainer!: ElementRef<SVGSVGElement>;
   @Input() density: number = 18;
@@ -37,12 +40,12 @@ export class ConfettiBackgroundComponent implements AfterViewInit {
   width: number = 0;
   height: number = 0;
 
-  colors: string[] = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'];
+  colors: string[] = ['var(--confetti-primary)', 'var(--confetti-secondary)','var(--confetti-tertiary)','var(--confetti-quaternary)',];
   numVertices: number = 4;
   minRadius: number = 0;
   maxRadius: number = 4;
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.renderConfetti();
   }
 

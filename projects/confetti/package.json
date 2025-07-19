@@ -1,6 +1,6 @@
 {
-  "name": "confetti",
-  "version": "0.0.1",
+  "name": "confettti",
+  "version": "0.0.15",
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0"
@@ -8,5 +8,16 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "description": "This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.",
+  "main": "index.js",
+  "scripts": {
+    "test": " \"echo \\\"No tests specified\\\" && exit 0\""
+  },
+  "keywords": [
+    "\"web\""
+  ],
+  "author": "\"components\",",
+  "license": "ISC",
+  "schematics": "./schematics/collection.json"
 }

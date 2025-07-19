@@ -14,7 +14,7 @@
 
   --background-color: color-mix(in srgb, var(--confetti-primary) 7%, white 93%);
   --navbar-color: color-mix(in srgb, var(--confetti-primary) 3%, white 97%);
-  --sidebar-background-color: color-mix(in srgb, var(--confetti-primary) 7%, white 93%);
+  --sidebar-background-color: color-mix(in srgb, var(--confetti-primary) 3%, white 97%);
 
   --dark-button-background:  var(--border-color);
   --dark-button-text-color:var(--light-button-background);
@@ -31,10 +31,6 @@
   border-color: var(--border-color)
 }
 
-body {
-  margin: 0;
-}
-
 @for $i from 1 through 6 {
   h#{$i} {
     font-size: #{4 - $i * 0.4}rem;
@@ -43,24 +39,9 @@ body {
 }
 
 .confetti-border {
-  border-style: solid;
   border-left-width: 1px;
   border-bottom-width: 3px;
   border-right-width: 3px;
   border-top-width: 1px;
 }
 
-
-.confetti-button-dark {
-  background-color: var(--dark-button-background);
-  color: var(--dark-button-text-color);
-}
-
-.confetti-button-light {
-  background-color: var(--light-button-background);
-  color: var(--light-button-text-color);
-}
-
-.confetti-hoverable-text {
-  background: var(--background-color)
-}

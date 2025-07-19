@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --confetti-primary: #0087dc;
+  --confetti-secondary: #ffc738;
+  --confetti-tertiary: #36ca9e;
+  --confetti-quaternary: #dd3a00;
+
+  --border-color: color-mix(in srgb, var(--confetti-primary) 80%, black 20%);
+  --text-color: color-mix(in srgb, var(--confetti-primary) 80%, black 20%);
+
+  --background-color: color-mix(in srgb, var(--confetti-primary) 7%, white 93%);
+  --navbar-color: color-mix(in srgb, var(--confetti-primary) 3%, white 97%);
+  --sidebar-background-color: color-mix(in srgb, var(--confetti-primary) 7%, white 93%);
+
+  --dark-button-background:  var(--border-color);
+  --dark-button-text-color:var(--light-button-background);
+  --light-button-background: var(--background-color);
+  --light-button-text-color: var(--dark-button-background);
+  --hover-button-dark: color-mix(in srgb, var(--dark-button-background) 60%, black 40%);
+  --hover-button-light: color-mix(in srgb, var(--light-button-background) 90%, var(--dark-button-background) 10%);
+
+  --modal-drop-bg: var(--background-color)
+}
+
+* {
+  color: var(--text-color);
+  border-color: var(--border-color)
+}
+
+body {
+  margin: 0;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: #{4 - $i * 0.4}rem;
+    color: var(--heading-color);
+  }
+}
+
+.confetti-border {
+  border-style: solid;
+  border-left-width: 1px;
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+  border-top-width: 1px;
+}
+
+
+.confetti-button-dark {
+  background-color: var(--dark-button-background);
+  color: var(--dark-button-text-color);
+}
+
+.confetti-button-light {
+  background-color: var(--light-button-background);
+  color: var(--light-button-text-color);
+}
+
+.confetti-hoverable-text {
+  background: var(--background-color)
+}

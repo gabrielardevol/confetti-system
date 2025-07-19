@@ -1,59 +1,85 @@
-<confetti-layout [menu]="menu">
+<!--<confetti-layout [menu]="menuToggle">-->
+<!--  <nav nav class="p-2">-->
+<!--    <button (click)="menuToggle = !menuToggle">toggle menu</button>-->
+<!--    navvvv-->
+<!--  </nav>-->
+<!--&lt;!&ndash;  <div sidebar [style.min-height]="'100%'" style="display: flex; flex-flow: column;">&ndash;&gt;-->
+<!--&lt;!&ndash;    <confetti-background class="border-b">&ndash;&gt;-->
 
-  <nav nav class="p-2">
-    <button (click)="menu = !menu">toggle menu</button>
-    nav
+<!--&lt;!&ndash;      <div class="p-4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <confetti-menu [menu]="menu">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </confetti-menu>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </confetti-background>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--  <confetti-background content  (click)="menuToggle = false">-->
+<!--&lt;!&ndash;    <confetti-fillers-container>&ndash;&gt;-->
+
+<!--      <div class="p-4">-->
+<!--        <h1>Header 1</h1>-->
+<!--        <h2>Header 2</h2>-->
+<!--        <h3>Header 3</h3>-->
+<!--        <h4>Header 4</h4>-->
+<!--        <h5>Header 5</h5>-->
+<!--        <h6>Header 6</h6>-->
+
+<!--        lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem-->
+<!--        lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem-->
+<!--        lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem-->
+<!--        lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem-->
+<!--        <div class="flex gap-2">-->
+<!--          <confetti-button (click)="openModal()" [dark]="false">Obrir modal</confetti-button>-->
+<!--          <confetti-button (click)="openModal()">Obrir modal</confetti-button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--&lt;!&ndash;    </confetti-fillers-container>&ndash;&gt;-->
+
+<!--  </confetti-background>-->
+<!--</confetti-layout>-->
+<!--<div #modalContainer></div>-->
+<style>
+  #main-container {
+    height: calc(100vh - 50px);
+    width: 100%;
+    padding: 12px
+
+  }
+</style>
+<confetti-layout [menu]="true">
+  <nav nav style="border-bottom: 1px solid; padding: 12px;">
+    Gabriel
   </nav>
-  <div sidebar [style.min-height]="'100%'" style="display: flex; flex-flow: column; background: #efefef; ">
-    <confetti-background style="border-bottom: 1px solid black">
-      <div class="p-4">
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem <br>
-        lorem 123<br>
-        <confetti-button>
-          Botó
-        </confetti-button>
-        <div>
-          <ng-container>
-          </ng-container>
-        </div>
-      </div>
-
-    </confetti-background>
+  <div menu  style="background: var(--sidebar-background-color); border-radius: 12px;" >
+    menu <br> menuu <br> mennnnuuu
   </div>
+  <confetti-background content >
+    <confetti-fillers-container>
+      <div id="main-container" class="" style="overflow: hidden">
+        <div style="display: flex; flex-flow: column; height: 100%;">
+          <div style="overflow: hidden;  display: flex; justify-content: end; flex-flow: column; flex: 1; text-align: center; font-weight: bold">
+            <div style="flex: 1"></div>
+            <h6 style=" overflow: auto;">Ei, hola! En què puc ajudar-te?</h6>
+            <div style="flex: 1"></div>
+          </div>
+          <div style="flex: 3; background: var(--confetti-tertiary)">Persona</div>
+          <div style="position: sticky; bottom: 0;display: flex; width: 100% ; gap: 12px;">
+            <input class="border confetti-border" style="flex: 1; border-radius: 4059403px; background: var(--sidebar-background-color)" type="text">
 
-  <confetti-background content>
-    <!--  <div style=" background: yellow;" >-->
-    <div class="p-4 relative" (click)="menu = false">
-      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
-      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
-      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
-      lorem ipsum dolor sit amet <br> lorem br lorem <br> lorem
-      <div class="flex gap-2">
-        <confetti-button (click)="openModal()" [dark]="false">Obrir modal</confetti-button>
-        <confetti-button (click)="openModal()">Obrir modal</confetti-button>
+            <button class="confetti-border confetti-button-dark" style="width: min-content; border-radius: 8px; ">
+              <confetti-background >
+                <div style="color: var(--dark-button-text-color); height: 48px; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center">
+                  send
+                </div>
+              </confetti-background>
+            </button>
+          </div>
+        </div>
 
       </div>
-    </div>
+    </confetti-fillers-container>
 
-    <!--        <confetti-fillers-container>-->
-    <!--          <div class="flex flex-col max-w-[50%] m-4 ">-->
-    <!--            <div class="p-4 bg-white  rounded-xl border border-black">tes gr gsfdjg sagk jsdghasdg jkskdajg fdsjkg fsajdkg sakdjg sdakjfsakdjfh sdkjfg kdsajhg fkghdsaft</div>-->
-    <!--          </div>-->
-
-    <!--        </confetti-fillers-container>-->
-
-    <!--  </div>-->
   </confetti-background>
 </confetti-layout>
-<div #modalContainer></div>
 

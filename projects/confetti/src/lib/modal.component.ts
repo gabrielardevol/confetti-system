@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Output, Input} from '@angular/core';
-import { FillersContainerComponent } from './fillers-container.component';
+import { FillersContainerComponent } from '../public-api';
 import {NgIf} from '@angular/common';
-import {ConfettiBackgroundComponent} from './confetti-background.component';
+import {ConfettiBackgroundComponent} from '../public-api';
 import {SharedStateService} from './shared-state.service';
+import {ConfettiButtonComponent} from '../public-api';
 
 @Component({
   selector: 'confetti-modal',
   standalone: true,
-  imports: [FillersContainerComponent, NgIf, ConfettiBackgroundComponent],
+  imports: [FillersContainerComponent, NgIf, ConfettiBackgroundComponent, ConfettiButtonComponent],
   styleUrls: ['utilities.scss'],
   styles: [`
     :host {
@@ -19,15 +20,10 @@ import {SharedStateService} from './shared-state.service';
       padding: 20px;
     }
 
-    /* Opacitat personalitzada */
-    .bg-opacity {
-      background-color: rgba(255, 255, 255, 0.29);
-    }
-
 
     /* Backdrop blur personalitzat */
     .bg-drop-blur {
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(3px);
     }
 
     /* Borders */
@@ -35,14 +31,17 @@ import {SharedStateService} from './shared-state.service';
       border-top-width: 1px;
     }
 
-    .border-black {
-      border-color: black;
+    #container {
+      background: var(--background-color) ;
+      border-style: solid;
     }
 
   `],
   template: `
 
-    <div class="absolute inset-0 flex flex-col justify-center items-center  bg-drop-blur  bg-opacity overflow-hidden"
+    <div class="absolute bg-drop-blur inset-0 flex flex-col justify-center items-center overflow-hidden"
+         style="background: color-mix(in srgb, var(--modal-drop-bg) 20%, transparent);
+"
          (click)="onCloseClick()">
 
       <confetti-background style="height: 100%; width: 100%">
@@ -52,25 +51,27 @@ import {SharedStateService} from './shared-state.service';
           <div class="confetti-content  flex flex-col relative h-full max-h-full  overflow-hidden"
                (click)="$event.stopPropagation()">
             <div class="flex-1"></div>
-            <div class="overflow-auto border border-black flex bg-white rounded-xl flex-col"
+            <div id="container" class="confetti-border overflow-hidden flex rounded-xl flex-col"
             [style.margin-top]="navbarSize + 'px'">
-              <main class="p-3 flex flex-col flex-1">
-                <h2><ng-content select="[header]"></ng-content>
-                  {{header}}</h2>
-                <p> <ng-content select="[body]"></ng-content>
-                  {{body}}
-                {{navbarSize}}</p>
+              <div style="height: 100%; overflow: auto">
+                <main class="p-3 flex flex-col flex-1">
+                  <h6><ng-content select="[header]"></ng-content>
+                    {{header}}</h6>
+                  <p  [innerHTML]="body"> <ng-content select="[body]"></ng-content>
+                    {{navbarSize}}</p>
 
-              </main>
-              <nav style="padding: 8px 16px;"
-                   class="sticky bottom-0 w-full border-t border-black bg-white bg-opacity">
-                <button *ngIf="closeButton" (click)="onCloseClick()">
-                  {{ closeButton }}
-                </button>
-                <button *ngIf="actionButton" (click)="onActionClick()">
-                  {{ actionButton }}
-                </button>
-              </nav>
+                </main>
+                <nav style="padding: 8px 16px; gap: 8px; justify-content: end; backdrop-filter: blur(3px);"
+                     class="sticky flex bottom-0 w-full border-t bg-opacity bg-drop-blur">
+                  <confetti-button [dark]="false" *ngIf="closeButton" (click)="onCloseClick()">
+                    {{ closeButton }}
+                  </confetti-button>
+                  <confetti-button *ngIf="actionButton" (click)="onActionClick()">
+                    {{ actionButton }}
+                  </confetti-button>
+                </nav>
+              </div>
+
             </div>
             <div class="flex-1"></div>
 
